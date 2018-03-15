@@ -4,7 +4,7 @@ LDFLAGS += -pthread
 
 .PHONY: prep all clean
 
-all: prep bin/cbox.a
+all: prep bin/libcbox.a
 
 prep:
 	mkdir -p build bin
