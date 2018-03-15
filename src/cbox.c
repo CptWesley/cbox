@@ -15,9 +15,9 @@
 #define XBOX_CONTROLLER_COUNT 4
 #define ATTEMPT_SLEEP 1000000
 
-static xbox_XBOX_BUTTON_callback down_callback = NULL;
-static xbox_XBOX_BUTTON_callback up_callback = NULL;
-static XBOX_EVENT_TRIGGER_callback trigger_callback = NULL;
+static xbox_button_callback down_callback = NULL;
+static xbox_button_callback up_callback = NULL;
+static xbox_trigger_callback trigger_callback = NULL;
 static xbox_controller_callback connected_callback = NULL;
 static xbox_controller_callback disconnected_callback = NULL;
 static pthread_mutex_t cm1, cm2, cm3, cm4;
@@ -210,10 +210,10 @@ void xbox_set_callback(const int type, void *callback) {
 	lock(XBOX_CONTROLLER4);
 	switch (type) {
 		case XBOX_EVENT_UP:
-			up_callback = (xbox_XBOX_BUTTON_callback) callback;
+			up_callback = (xbox_button_callback) callback;
 			break;
 		case XBOX_EVENT_DOWN:
-			down_callback = (xbox_XBOX_BUTTON_callback) callback;
+			down_callback = (xbox_button_callback) callback;
 			break;
 		case XBOX_EVENT_CONNECTED:
 			connected_callback = (xbox_controller_callback) callback;
@@ -222,7 +222,7 @@ void xbox_set_callback(const int type, void *callback) {
 			disconnected_callback = (xbox_controller_callback) callback;
 			break;
 		case XBOX_EVENT_TRIGGER:
-			trigger_callback = (XBOX_EVENT_TRIGGER_callback) callback;
+			trigger_callback = (xbox_trigger_callback) callback;
 			break;
 	}
 	unlock(XBOX_CONTROLLER1);

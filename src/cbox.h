@@ -70,8 +70,8 @@ static const int XBOX_BUTTON_RS = 19;
 #define XBOX_BUTTON_RS 19
 
 // Callback types.
-typedef void (*xbox_XBOX_BUTTON_callback)(const int, const int);
-typedef void (*XBOX_EVENT_TRIGGER_callback)(const int, const int, const int);
+typedef void (*xbox_button_callback)(const int, const int);
+typedef void (*xbox_trigger_callback)(const int, const int, const int);
 typedef void (*xbox_controller_callback)(const int);
 
 // Functions.
